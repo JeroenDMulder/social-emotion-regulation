@@ -1,0 +1,7 @@
+"0","#| label: noise-ppc"
+"0","#| fig-cap: ""Posterior predictive checks (ppc) for the outcome noise. The model underlying the left plot assumes a normally-distributed outcome; the model underlying the right plot assumes a t-distributed outcome."""
+"0","#| fig-width: 10"
+"0","#| fig-height: 5"
+"0","#| fig-column: page-right"
+"0","#| warning: false"
+"0","knitr::include_graphics(""figures\\ppc-noise.png"")"
