@@ -1,5 +1,0 @@
-"0","#| label: fig-DLPFC-ppc"
-"0","#| echo: FALSE"
-"0","#| fig-cap: ""Posterior predictive check for the outcome DLPFC, and imputed values of age and age-squared.The dark blue line represents observed data, and the light blue lines represent model predicted (replicated) values."""
-"0","#| warning: false"
-"0","knitr::include_graphics(""figures\\ppc-DLPFC.png"")"

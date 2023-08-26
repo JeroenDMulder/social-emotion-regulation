@@ -1,8 +1,0 @@
-"0","#| label: fig-results-noise"
-"0","#| echo: FALSE"
-"0","#| fig-cap: ""Model results for ."""
-"0","#| fig-width: 10"
-"0","#| fig-height: 5"
-"0","#| warning: false"
-"0",""
-"0","knitr::include_graphics("".\\figures\\brms-noise.png"")"
