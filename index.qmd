@@ -1,6 +1,6 @@
 ---
 title: "Online supplementary materials"
-subtitle: "``Individual differences in developmental trajectories  of social emotion regulation from childhood to emerging adolescence'' by Mulder, Dobbelaar, and Achterberg (under review)"
+subtitle: "``Behavioral and neural responses to social rejection: Individual differences in developmental trajectories across childhood and adolescence'' by Mulder, Dobbelaar, and Achterberg (under review)"
 author: 
   - name: Jeroen D. Mulder
     url: https://orcid.org/0000-0002-5553-0856
@@ -29,7 +29,7 @@ library(ggplot2) # Data visualization
 ```
 
 # Introduction
-This document contains the online supplementary materials to Mulder, Dobbelaar, and Achterberg (under review). It serves as a methodological and statistical rationale, and highlights the R code that was used to fit the models and explore the results. First, the study's research aims are briefly summarized. Second, the data used in the study are introduced, in which the focus lies on those characteristics of the data that require due consideration in the subsequent statistical analysis. Third, the statistical models are introduced in detail. Fourth, the models are fitted to the data, and model convergence and fit is assessed. Finally, numerical results are interpreted and visualized. The complete R code (i.e., including code that was used for data manipulation and the creation of visualizations) can be found on [GitHub](https://github.com/JeroenDMulder/social-emotion-regulation). 
+This document contains the online supplementary materials to Mulder, Dobbelaar, and Achterberg (under review). It serves as a methodological and statistical rationale, and highlights the R code that was used to fit the models and explore the results. First, the study's research aims are briefly summarized. Second, the data used in the study are introduced, in which the focus lies on those characteristics of the data that require due consideration in the subsequent statistical analysis. Third, the statistical models are introduced in detail. Fourth, the models are fitted to the data, and model convergence and fit are assessed. Finally, numerical results are interpreted and visualized. The complete R code (i.e., including code that was used for data manipulation and the creation of visualizations) can be found on [GitHub](https://github.com/JeroenDMulder/social-emotion-regulation). 
 
 # Research aims 
 This study has three main aims:
@@ -38,13 +38,13 @@ This study has three main aims:
 2. to estimate the associations between development in behavioral aggression regulation and development in neural responses to social rejection, and
 3. to estimate the relationship between development in social emotion regulation and social well-being in adolescence.
 
-# Measurements
-The data in this study come from the experimental longitudinal twin sample from the Leiden Consortium Individual Development (L-CID). Participants in the sample were invited to participate in fMRI sessions at three measurement occasions with approximately 2-year intervals, termed wave 1, 3, and 5, respectively. During the fMRI sessions, the social network aggression task (SNAT) was used to measure a) behavioral (aggressive) responses to social rejection, and b) neural responses to social rejection. A sixth wave of data was collected in which participants' social well-being was measured. More detailed information about the sample used in this study is given in this study's preregistration by @achterberg_individual_2022, and in @dobbelaar_development_2022. For details on the Leiden Consortium Individual Development project, the reader is referred to @crone_neural_2020. 
+# The data
+The data in this study come from the experimental longitudinal twin sample from the Leiden Consortium Individual Development (L-CID). Participants in the sample were invited to participate in fMRI sessions at three measurement occasions with approximately two-year intervals, termed wave 1, 3, and 5, respectively. During the fMRI sessions, the social network aggression task (SNAT) was used to measure behavioral (aggressive) responses to social rejection, and neural responses to social rejection. A sixth wave of data was collected in which participants' social well-being was measured. More detailed information about the sample used in this study is given in this study's preregistration by @achterberg_individual_2022, and in @dobbelaar_development_2022. For details on the Leiden Consortium Individual Development project, the reader is referred to @crone_neural_2020. 
 
 ## Behavioural responses
-Aggressive behavioral responses to social rejection were measured during each fMRI session using the social network aggression task (SNAT). In short, during the SNAT, a participant would receive feedback from multiple peers on their own personal profile (which they created themselves specifically for the study). The feedback was either positive, neutral, or negative. Participants were told that they could press a button to send a loud noise blast to the peers in response to the feedback. The longer the button press, the longer, and louder, the noise blast would be. The length of the button press (in ms) was recorded, and taken as a proxy for behavioral aggressive response (maximum length of the button press was 3500 ms). In total, there were 20 neutral trials and 20 negative trials per fMRI session, resulting in 3 sets of 40 repeated behavioral responses for individuals who completed measurements at all three waves. 
+Aggressive behavioral responses to social rejection were measured during each fMRI session using the social network aggression task (SNAT). In short, during the SNAT, a participant would receive feedback from multiple peers on their own personal profile (which they created themselves specifically for the study). The feedback was either positive, neutral, or negative. Participants were told that they could press a button to send a loud noise blast to the peers in response to the feedback. The longer the button press, the longer, and louder, the noise blast would be. The length of the button press (in ms) was recorded, and taken as a proxy for behavioral aggressive response (maximum length of the button press was 3500 ms). In total, there were 20 neutral trials and 20 negative trials per fMRI session, resulting in three sets of 40 repeated behavioral responses for individuals who completed measurements at all three waves. 
 
-Several characteristics of the behavioural response measurements warrant attention. First, the data have **a hierarchical structure**, with repeated feedback *trials* (level 1) nested in measurement *waves* (level 2), which are nested in *individuals* (level 3), which are nested in *families* (level 4). Second, there are **individually-varying times of observation** for the fMRI sessions (see the reported age range per measurement wave in Table 1 of the paper). Hence, at each wave, participants might have been at a different stage in their developmental process. Third, @fig-cens shows that a significant amount of behavioral response measurements have been censored from above, resulting from a time limit on the length of the button press.
+Several characteristics of the behavioural response measurements warrant attention. First, the data have **a hierarchical structure**, with repeated feedback *trials* (level 1) nested in measurement *waves* (level 2), which are nested in *individuals* (level 3), which are nested in *families* (level 4). Second, there are **individually-varying times of observation** for the fMRI sessions (see the reported age range per measurement wave in Table 1 of the main paper). Hence, at any given wave, participants might have been at a different stage in their developmental process. Third, @fig-cens shows that a significant amount of behavioral response measurements have been censored from above, resulting from a time limit on the length of the button press.
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 #| label: fig-cens
@@ -89,7 +89,7 @@ Fourth, there is a fair amount of **missing data**. For the behavioral response 
 
 ```{r missing, echo=FALSE}
 #| label: fig-missing
-#| fig-cap: "Missing data patterns."
+#| fig-cap: "Missing data patterns. The behavioural measurements are denoted by `noise`. `DLPFC`, `INS`, and `MPFC` are the neural responses in the dorsolateral prefrontal cortex, anterior insula, and medial prefrontal cortext, respectively."
 #| fig-width: 8
 #| fig-height: 4
 #| warning: false
@@ -152,9 +152,9 @@ ggmice::plot_pattern(
 ```
 
 ## Neural responses
-In addition to behavioral responses after social feedback, neural responses after social feedback were also measured using fMRI scans during the SNAT, specifically in the anterior insula `AI`, the medial prefrontal cortex `MPFC`, and the dorsolateral prefrontal corect `DLPFC`. Like the behavioral response measure, the neural responses also have a hierarchical structure. However, preprocessing of the fMRI data resulted in measurements that are contrasts between average brain response for neutral feedback versus average brain response for negative feedback. Hence, the neural measurements have (only) a three level structure compared to the behavioral measurements, i.e., there is no neural data at the trial level (level 1). Furthermore, there is missing data in the neural measurements, as visualized in @fig-missing. This is a combination of dropout and measurement error (e.g., when children move too much to get an accurate fMRI scan). Finally, as the behavioral and neural measurements were taken simultaneously, there are **individually-varying times of observation** to also need to be taken into account for these measurements. 
+In addition to behavioral responses after social feedback, neural responses after social feedback were also measured using fMRI scans during the SNAT, specifically in the anterior insula `AI`, the medial prefrontal cortex `MPFC`, and the dorsolateral prefrontal corect `DLPFC`. Like the behavioral response measure, the neural responses also have a hierarchical structure. However, preprocessing of the fMRI data resulted in measurements that are contrasts between average brain response for neutral feedback versus average brain response for negative feedback. Hence, the neural measurements have a three level structure compared to the behavioral measurements (i.e., there is no neural data at the trial level, level 1). Furthermore, there is missing data in the neural measurements, as visualized in @fig-missing. This is a combination of dropout and measurement error (e.g., when children move too much to get an accurate fMRI scan; Table 1 in the main paper contains an overview of reasons for exclusion frequencies of fMRI measurements per wave). Finally, as the behavioral and neural measurements were taken simultaneously, there are **individually-varying times of observation** to also need to be taken into account for these measurements. 
 
-The neural responses (i.e., contrast) across time are plotted in the spaghetti plots below. Such plots are useful to as an initial exploration of individual development in brain response. The thick black line represent the average linear development in brain response, and colored lines represent individual brain responses across time. From the plot it becomes clear that there are many differences in how individuals develop over time, and that on average development appears to be only minor.
+The neural responses (i.e., contrast) across time are plotted in the spaghetti plots below. These plots are useful as an initial exploration of individual development in brain response. The thick black line represent the average linear development in brain response, and colored lines represent individual brain responses across time. From the plot it becomes clear that there are many differences in how individuals develop over time, and that on average development appears to be only minor.
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 #| label: fig-spaghetti
@@ -252,12 +252,107 @@ ggplot(df_brain, aes(x = age, y = response)) +
 At wave 6, a social well-being questionnaire was filled in, consisting of 5 subscales: Ten items from the Adolescent Wellbeing Paradigm (AWP), ten items from the World Health Organization Quality of Life Scale (WHOQoL), and three subscales (each five items) from the Harter’s Self-Perception Profile for Adolescents (SPPA), specifically the subscales Social Competence (SC), Close Friendships (CF) and Global Self-worth (GS). All items were answered on a four-point Likert scale, with low scores indicating low social well-being and high scores indicating high social well-being. Instructions in each of the subscale manuals were followed for the handling of missing data and scoring of subscale scores. As such simple mean scores were computed per subscale and used for further statistical analyses. 
 
 # Statistical models {#sec-models}
-To explore Aim 1, the behavioral and neural responses were analyzed using Bayesian multilevel growth curve models. For Aims 2 and 3, a single structural equation model was specified in which social well-being was predicted from the estimated individual growth components extracted from the Bayesian multilevel growth curve model. 
+To explore Aim 1, the behavioral and neural responses were analyzed using Bayesian multilevel growth curve models, and specified using the R package `brms` [@burkner_brms_2017] in R version 4.2.2 [@r_core_team_r_2019]. The Bayesian estimation framework was chosen because it can easily accommodate censoring by integrating out censored values [@gelman_bayesian_2013]. Moreover, missing data can be imputed as part of the model fitting process under the assumption of missing at random (MAR) [@burkner_brms_2017]. The multilevel framework was chosen because it treats the time of observation as data (rather than as a parameter, as in a latent growth curve model), and can therefore more easily handle individually-varying times of observations [@mehta_putting_2000]. For Aims 2 and 3, a single structural equation model was specified in which social well-being was predicted from the estimated individual growth components extracted from the Bayesian multilevel growth curve model. 
+
+## Intercept-only models 
+To assess the proportion of observed variance that can be explained by each of the levels (expressed in terms of an intraclass correlation), intercept-only models were run first. The tabs below contain R code for estimating each of these intercept-only models using `brms`. The results are displayed in Table 2 of the main paper. 
+
+::: {.panel-tabset}
+### `INS`
+
+```{.r eval=FALSE}
+m_INS_ICC <- brm(
+  formula = INS ~ 1 + (1 | fam/id),
+  data = df_brain,
+  family = gaussian(),
+  warmup = 2000,
+  iter = 4000,
+  chains = 2,
+  init = "random", 
+  cores = 2,
+  thin = 4,
+  seed = 20221005
+)
+
+ICC_id <- "sd_fam:id__Intercept^2 / (sd_fam__Intercept^2 + sd_fam:id__Intercept^2 + sigma^2) > 0"
+ICC_fam <- "sd_fam__Intercept^2 / (sd_fam__Intercept^2 + sd_fam:id__Intercept^2 + sigma^2) > 0"
+
+hypothesis(m_INS_ICC, hypothesis = ICC_id, class = NULL, robust = FALSE)
+hypothesis(m_INS_ICC, hypothesis = ICC_fam, class = NULL, robust = FALSE)
+```
+
+### `MPFC`
+
+```{.r eval=FALSE}
+m_MPFC_ICC <- brm(
+  formula = MPFC ~ 1 + (1 | fam/id),
+  data = df_brain,
+  family = gaussian(),
+  warmup = 2000,
+  iter = 4000,
+  chains = 2,
+  init = "random", 
+  cores = 2,
+  thin = 4,
+  seed = 20221005,
+  control = list(adapt_delta = 0.9)
+)
+
+hypothesis(m_MPFC_ICC, hypothesis = ICC_id, class = NULL, robust = FALSE)
+hypothesis(m_MPFC_ICC, hypothesis = ICC_fam, class = NULL, robust = FALSE)
+```
+
+### `DLPFC`
+
+```{.r eval=FALSE}
+m_DLPFC_ICC <- brm(
+  formula = DLPFC ~ 1 + (1 | fam/id),
+  data = df_brain,
+  family = gaussian(),
+  warmup = 2000,
+  iter = 4000,
+  chains = 2,
+  init = "random", 
+  cores = 2,
+  thin = 4,
+  seed = 20221005,
+  control = list(adapt_delta = 0.9)
+)
+
+hypothesis(m_DLPFC_ICC, hypothesis = ICC_id, class = NULL, robust = FALSE)
+hypothesis(m_DLPFC_ICC, hypothesis = ICC_fam, class = NULL, robust = FALSE)
+```
+
+### `noise`
+
+```{.r eval=FALSE}
+m_noise_gaus_ICC <- brm(
+  formula = noise | cens(censored) ~ 1 + (1 | fam/id/wave),
+  data = df_noise,
+  family = gaussian(),
+  warmup = 2000,
+  iter = 6000,
+  chains = 2,
+  init = "random",
+  cores = 2,
+  thin = 6,
+  seed = 20221005,
+  control = list(adapt_delta = 0.9)
+)
+
+ICC_noise_fam <- "sd_fam__Intercept^2 / (sd_fam__Intercept^2 + sd_fam:id__Intercept^2 + sd_fam:id:wave__Intercept^2 + sigma^2) > 0"
+ICC_noise_id <- "sd_fam:id__Intercept^2 / (sd_fam__Intercept^2 + sd_fam:id__Intercept^2 + sd_fam:id:wave__Intercept^2 + sigma^2) > 0"
+ICC_noise_wave <- "sd_fam:id:wave__Intercept^2 / (sd_fam__Intercept^2 + sd_fam:id__Intercept^2 + sd_fam:id:wave__Intercept^2 + sigma^2) > 0"
+
+hypothesis(m_noise_gaus_ICC, hypothesis = ICC_noise_fam, class = NULL, robust = TRUE)
+hypothesis(m_noise_gaus_ICC, hypothesis = ICC_noise_id, class = NULL, robust = TRUE)
+hypothesis(m_noise_gaus_ICC, hypothesis = ICC_noise_wave, class = NULL, robust = TRUE)
+```
+
+:::
 
 ## Bayesian multilevel growth curve model (Aim 1)
-The behavioral and neural measurements were analyzed using separate Bayesian multilevel growth curve models, and specified using the R package `brms` [@burkner_brms_2017] in R version 4.2.2 [@r_core_team_r_2019]. The Bayesian estimation framework was chosen because it can easily accommodate censoring by integrating out censored values (see @fig-cens) [@gelman_bayesian_2013]. Moreover, missing data can be imputed as part of the model fitting process under the assumption of missing at random (MAR) [@burkner_brms_2017]. The multilevel framework was chosen because it treats the time of observation as data (rather than as a parameter, as in a latent growth cNee, urve model), and can therefore more easily handle individually-varying times of observations [@mehta_putting_2000]. 
-
-Let $noise_{fiwt}$ be the noise blast duration (in seconds) for an individual $i$ from family $f$, at measurement wave $w$ and trial $t$. At level 1, the model is given by
+The growth curve models were build up as follows. Let $noise_{fiwt}$ be the noise blast duration (in seconds) for an individual $i$ from family $f$, at measurement wave $w$ and trial $t$. At level 1, the model is given by
 $$
 noise_{fiwt} = \beta_{0fiw} + \beta_{1fiw} \; x_{fiwt} + e_{fiwt}. 
 $$
@@ -282,21 +377,15 @@ $$\delta_{2f} = \theta_{2} + z_{2f},$$
 $$\delta_{3f} = \theta_{3} + z_{3f}.$$
 where $\theta_{0}$ is the grand mean (across families, individuals, waves, and trials) of noise blast for the neutral condition. $\theta_{1}$, $\theta_{2}$, and $\theta_{3}$ are the grand means of the growth components. $z_{1f}$, $z_{2f}$, and $z_{3f}$ are family-specific differences herein, with variances $Var[z_{1f}]$, $Var[z_{2f}]$, and $Var[z_{3f}]$. In total, 15 parameters are estimated in this model, namely 4 fixed effects and 4 random effect variances at level 4, 4 random effect variances at level 3, 2 random effect variances at level 2, and 1 residual variance at level 1. 
 
-Missing data were imputed as part of model fitting. Due to the setup of the study (with a planned 2-year interval between subsequent measurement waves), missing values for age $a^{mis}_{fiw}$ could be predicted from the individual's age at the first measurement wave `ageW1c` and the wave number. Missing values for age-squared $a^{2, mis}_{fiw}$ could then be created simply by squaring $a^{mis}_{fiw}$. This resulted in the exclusion of a single family (2 individuals) from the sample, who had missing values at their first measurement wave. For the outcome, missing values were predicted from feedback condition $X$, age $A$, and age-squared $A^{2}$. For this procedure to work well, missing at random (MAR) has to be assumed, implying that the degree of missingness only depends on the observed data. While, the plausibility of this assumption can be questioned, it is a weaker assumption than missing completely at random (MCAR), which would be assumed when the missing values were simply deleted from the data [@gelman_bayesian_2013]. 
+Missing data were imputed as part of model fitting. Due to the setup of the study (with a planned two-year interval between subsequent measurement waves), missing values for age $a^{mis}_{fiw}$ could be predicted from the individual's age at the first measurement wave `ageW1c` and the wave number. Missing values for age-squared $a^{2, mis}_{fiw}$ could then be created simply by squaring $a^{mis}_{fiw}$. This resulted in the exclusion of a single family (two individuals) from the sample, who had missing values at their first measurement wave. For the outcome, missing values were predicted from feedback condition $X$, age $A$, and age-squared $A^{2}$. For this procedure to work well, missing at random (MAR) has to be assumed, implying that the degree of missingness only depends on the observed data. While, the plausibility of this assumption can be questioned, it is a weaker assumption than missing completely at random (MCAR), which would be assumed when the missing values were simply deleted from the data [@gelman_bayesian_2013]. 
 
 For the brain data, mean response is already available from the preprocessing of the MRI data. Therefore, in the model above, the trial level is removed, as well as the equation for $\beta_{0fiw}$ at level 2. The interpretation of the remaining parameters, and the procedure used to impute for missing values, are equivalent. 
 
 R code for model fitting is printed below, for each outcome in a separate tab. `brms` allows for models to be specified using `lme4`-like syntax. The `mi()` wrapper around variables denotes that missing values are imputed. For each outcome, `iter = 4000` values were sampled from the posterior distribution, of which the first `warmup = 2000` were discarded. `chains = 2` chains were used, and convergence was assessed using the split-$\hat{R}$ value [@gelman_bayesian_2013]. Only every `thin = 4`$^{th}$ simulation draw was kept to keep model size manageable, resulting in a total of 1000 posterior simulation draws. `Stan`'s default uninformative priors were used because no independent prior information was available on the development of behavioral and brain emotion regulation as measured using the SNAT. 
 
-```{r panelset, echo=FALSE}
-xaringanExtra::use_panelset()
-```
+::: {.panel-tabset}
 
-::: {.panelset}
-
-::: {.panel}
-
-### `noise` {.panel-name}
+### `noise` 
 Noise blast measurements have a lower limit of 0, and are restricted from above at 3500 ms. In theory, this information could be included in the model in the form of a bounded prior on the range of values that the fixed effects $\theta$ could take on. However, the `brms` manual states that such a procedure is rarely useful, and hence default uninformative priors were used. The `cens()` function was used to denote which values were censored. Two models where fitted. The first assumed that the outcome was Gaussian distributed. Second, given the complexity of this 4-level model, and the restricted range of `noise`, a model assuming a *t*-distributed outcome was fitted as well to allow for more robust inference [@gelman_bayesian_2013]. 
 
 ```{r}
@@ -344,11 +433,7 @@ m_noise_stud <- brm(f_noise_stud,
 )
 ```
 
-:::
-
-::: {.panel}
-
-### `DLPFC` {.panel-name}
+### `DLPFC` 
 
 ```{r DLPFC, eval=FALSE}
 f_DLPFC_3L <- 
@@ -369,11 +454,7 @@ m_DLPFC_3L <- brm(f_DLPFC_3L,
 )
 ```
 
-:::
-
-::: {.panel}
-
-### `AI` {.panel-name}
+### `AI`
 
 The term `AI` in the R code below actually refers to the anterior insula `AI`. 
 
@@ -396,11 +477,7 @@ m_INS_3L <- brm(f_INS_3L,
 )
 ```
 
-:::
-
-::: {.panel}
-
-### `MPFC` {.panel-name}
+### `MPFC` 
 
 ```{r MPFC, eval=FALSE}
 f_MPFC_3L <- 
@@ -423,25 +500,21 @@ m_MPFC_3L <- brm(f_MPFC_3L,
 
 :::
 
-:::
-
----
-
 ### Deviations from preregistration
-The preregistration by @achterberg_individual_2022 stated that correlations between the random coefficients at each level would be estimated. However, due to low level-specific sample sizes (i.e., 3 measurements per individual at level 2, 2 individuals per family at level 3), this was not statistically feasible. Therefore, these coefficients were excluded from the model. 
+The preregistration by @achterberg_individual_2022 stated that correlations between the random coefficients at each level would be estimated. However, due to low level-specific sample sizes (i.e., three measurements per individual at level 2, two individuals per family at level 3), this was not statistically feasible. Therefore, these coefficients were excluded from the model. 
 
 ## Structural equation model (Aims 2 and 3)
-The analyses described here are related to both Aims 2 and 3. For Aim 2, associations between the growth components of the 4 behavioral and brain outcomes were investigated. For Aim 3, estimated individual-level growth components were used to predict social well-being at wave 6. In this section, I first discus how growth components for each individual are extracted from the growth curve models. Second, a 1-factor confirmatory factor analysis model is introduced to investigate the dimensionality of the five social well-being subscales. Third, a structural equation model is introduced to estimate correlations between the growth components, and to predict social well-being during adolescence.
+The analyses described here are related to both Aims 2 and 3. For Aim 2, associations between the growth components of the four behavioral and brain outcomes were investigated. For Aim 3, estimated individual-level growth components were used to predict social well-being at wave 6. In this section, I first discus how growth components for each individual are extracted from the growth curve models. Second, a one-factor confirmatory factor analysis model is introduced to investigate the dimensionality of the five social well-being subscales. Third, a structural equation model is introduced to estimate correlations between the growth components, and to predict social well-being during adolescence.
 
 ### Creating individual-level growth components
 The results from the fitted Bayesian multilevel growth curve models are based on 1000 draws of the poster distribution for each parameter, which includes both fixed effects and random effects. Therefore, at each iteration, the sampled fixed effects and individually drawn random effects can be extracted from the model and used compute personalized growth components. Specifically, for an individual $i$ from family $f$, and given a specific iteration, the growth components are computed as
 $$\gamma_{10fi} = \theta_{1} + z_{1f} + v_{1if},$$
 $$\gamma_{11fi} = \theta_{2} + z_{2f} + v_{2if},$$
 $$\gamma_{12fi} = \theta_{3} + z_{3f} + v_{3if}.$$
-Computing these 3 parameters, for each of the 4 outcomes, and for each iteration, results in 1000 data sets of $4 \times 3 = 12$ personalized growth components. These serve as input for predicting social well-being. 
+Computing these three parameters, for each of the four outcomes, and for each iteration, results in 1000 data sets of $4 \times 3 = 12$ personalized growth components. These serve as input for predicting social well-being. R code for these computations is too long to display here, but is available at [GitHub](https://github.com/JeroenDMulder/social-emotion-regulation). 
 
 ### Dimensionality of social well-being
-Social well-being data consists of 35 items, belonging to 1 of 5 subscales. The data were preprocessed by computing factor scores for each subscale by taking the mean of the respective items (as instructed in the subscale manuals). Using the R package *lavaan* (version 0.6.12), a 1-factor confirmatory factor analysis model was fitted with the subscales scores as indicators [@rosseel_lavaan_2012].
+Social well-being data consists of 35 items, belonging to one of five subscales. The data were preprocessed by computing factor scores for each subscale by taking the mean of the respective items (as instructed in the subscale manuals). Using the R package *lavaan* (version 0.6.12), a one-factor confirmatory factor analysis model was fitted with the subscales scores as indicators [@rosseel_lavaan_2012].
 
 ```{r}
 #| label: cfa-wellbeing
@@ -515,18 +588,16 @@ m_regression <- '
 ' 
 ```
 
-To take the uncertainty of the individual growth component estimates from the Bayesian multilevel growth curve models into account, the SEM model was fitted to each of the 1000 data sets using the R package *semTools* [@jorgensen_semtools_2022]. Point and standard error estimates were pooled according to rules by @rubin_multiple_1987. 
+To take the uncertainty of the individual growth component estimates from the Bayesian multilevel growth curve models into account, the SEM model was fitted to each of the 1000 data sets using the R package `semTools` [@jorgensen_semtools_2022]. Point and standard error estimates were pooled according to rules by @rubin_multiple_1987. 
 
 # Results
 
 ## Development of behavioral and brain responses (Aim 1)
 In this section, model fit is evaluated using a posterior predictive check, and the results are presented. The results are organized below per outcome separately. 
 
-::: {.panelset}
+::: {.panel-tabset}
 
-::: {.panel}
-
-### `noise` {.panel-name}
+### `noise` 
 
 The posterior predictive checks (ppc) of two models for `noise` are shown in @fig-noise-ppc: The left panel is a ppc-plot from a model assuming a Gaussian-distributed outcome; the right panel is a ppc-plot from a model assuming a *Student t*-distributed outcome. The comparison shows that using a *t*-distribution, the model is better able to capture the kurtosis in the observed density, and that the modes of the posterior draws better align with the peak of the observed data. Therefore, the model assuming a *t*-distributed outcome is selected for further interpretation. 
 
@@ -576,11 +647,7 @@ The fixed effects show that there is 95% certainty that expected response in `no
 knitr::include_graphics(".\\figures\\plot_noise_predicted.png")
 ```
 
-:::
-
-::: {.panel}
-
-### `DLPFC` {.panel-name}
+### `DLPFC`
 
 Results for the `DLPFC` model are shown below. 
 
@@ -615,11 +682,7 @@ These results are visualized in @fig-DLPFC-predicted. The thick black line repre
 knitr::include_graphics(".\\figures\\plot_DLPFC_predicted.png")
 ```
 
-:::
-
-::: {.panel}
-
-### `AI` {.panel-name}
+### `AI`
 
 Results for the `AI` model are shown below. Note that the term `INS` here refers to the anterior insula `AI`. 
 
@@ -656,11 +719,7 @@ These results are visualized in @fig-AI-predicted. The thick black line represen
 knitr::include_graphics(".\\figures\\plot_INS_predicted.png")
 ```
 
-:::
-
-::: {.panel}
-
-### `MPFC` {.panel-name}
+### `MPFC` 
 
 Results for the `MPFC` model are shown below:
 
@@ -696,8 +755,6 @@ These results are visualized in @fig-MPFC-predicted. The thick black line repres
 #| warning: false
 knitr::include_graphics(".\\figures\\plot_MPFC_predicted.png")
 ```
-
-:::
 
 :::
 
