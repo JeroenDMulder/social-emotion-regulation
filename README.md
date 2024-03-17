@@ -1,6 +1,6 @@
-# Supplementary materials to Mulder, Dobbelaar, and Achterberg (under review)
+# Supplementary materials to [Mulder, Dobbelaar, and Achterberg (2024)](https://doi.org/10.1016/j.dcn.2024.101365)
 
-These online supplementary materials provide the R-code for preparing and analyzing the data, respectively. The website can be found at [https://jeroendmulder.github.io/social-emotion-regulation](https://jeroendmulder.github.io/social-emotion-regulation). The main manuscript is still under review. The preregistration of this project is available as [Achterberg, Mulder, Dobbelaar, Heunis, and Crone (2022)](https://doi.org/10.17605/OSF.IO/HDRZC).
+These online supplementary materials provide the R-code for preparing and analyzing the data, respectively. The website can be found at [https://jeroendmulder.github.io/social-emotion-regulation](https://jeroendmulder.github.io/social-emotion-regulation). The preregistration of this project is available as [Achterberg, Mulder, Dobbelaar, Heunis, and Crone (2022)](https://doi.org/10.17605/OSF.IO/HDRZC).
 
 ## Author of supplementary materials
 

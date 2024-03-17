@@ -1,6 +1,6 @@
 ---
 title: "Online supplementary materials"
-subtitle: "``Behavioral and neural responses to social rejection: Individual differences in developmental trajectories across childhood and adolescence'' by Mulder, Dobbelaar, and Achterberg (under review)"
+subtitle: "``Behavioral and neural responses to social rejection: Individual differences in developmental trajectories across childhood and adolescence'' by Mulder, Dobbelaar, and Achterberg (2024)"
 author: 
   - name: Jeroen D. Mulder
     url: https://orcid.org/0000-0002-5553-0856
@@ -29,7 +29,9 @@ library(ggplot2) # Data visualization
 ```
 
 # Introduction
-This document contains the online supplementary materials to Mulder, Dobbelaar, and Achterberg (under review). It serves as a methodological and statistical rationale, and highlights the R code that was used to fit the models and explore the results. First, the study's research aims are briefly summarized. Second, the data used in the study are introduced, in which the focus lies on those characteristics of the data that require due consideration in the subsequent statistical analysis. Third, the statistical models are introduced in detail. Fourth, the models are fitted to the data, and model convergence and fit are assessed. Finally, numerical results are interpreted and visualized. The complete R code (i.e., including code that was used for data manipulation and the creation of visualizations) can be found on [GitHub](https://github.com/JeroenDMulder/social-emotion-regulation). 
+This document contains the online supplementary materials to [Mulder, Dobbelaar, and Achterberg (2024)](https://doi.org/10.1016/j.dcn.2024.101365). It serves as a methodological and statistical rationale, and highlights the R code that was used to fit the models and explore the results. Questions regarding the analyses in the paper can be addressed to the first author, [Jeroen D. Mulder](https://orcid.org/0000-0002-5553-0856). 
+
+First, the study's research aims are briefly summarized. Second, the data used in the study are introduced, in which the focus lies on those characteristics of the data that require due consideration in the subsequent statistical analysis. Third, the statistical models are introduced in detail. Fourth, the models are fitted to the data, and model convergence and fit are assessed. Finally, numerical results are interpreted and visualized. The complete R code (i.e., including code that was used for data manipulation and the creation of visualizations) can be found on [GitHub](https://github.com/JeroenDMulder/social-emotion-regulation). 
 
 # Research aims 
 This study has three main aims:
