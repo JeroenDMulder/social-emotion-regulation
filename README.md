@@ -6,7 +6,7 @@ These online supplementary materials provide the R-code for preparing and analyz
 
 * **Jeroen Mulder, MSc** - *Postdoc* - [Utrecht University](https://www.uu.nl/staff/JDMulder)
 
-## Authors of main manuscript
+## Authors of main paper
 
 * **Jeroen Mulder, MSc** - *Postdoc* - [Utrecht University](https://www.uu.nl/staff/JDMulder)
 * **Dr. Simone Dobbelaar** - *Postdoc* - [Leiden University](https://www.universiteitleiden.nl/en/staffmembers/simone-dobbelaar#tab-1)
